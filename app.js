@@ -17,15 +17,15 @@ function wishMe(){
     var hour = day.getHours();
 
     if(hour>=0 && hour<12){
-        speak("Good Morning Boss...")
+        speak("Good Morning Marcus, hope you slept well last night...")
     }
 
     else if(hour>12 && hour<17){
-        speak("Good Afternoon Master...")
+        speak("Good Afternoon Marcus, how's your day so far...")
     }
 
-    else{
-        speak("Good Evenining Sir...")
+    else if(hour>17 && hour<0){
+        speak("Good Evenining Marcus,just remember not to go to sleep too late tonight...")
     }
 
 }
@@ -68,6 +68,10 @@ function takeCommand(message){
         window.open("https://facebook.com", "_blank");
         speak("Opening Facebook...")
     }
+    else if(message.includes("open calculator")){
+        window.open("https://www.desmos.com/scientific", "_blank");
+        speak("Opening Calculator...")
+    }
 
     else if(message.includes('what is') || message.includes('who is') || message.includes('what are')) {
         window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
@@ -91,12 +95,6 @@ function takeCommand(message){
     else if(message.includes('date')) {
         const date = new Date().toLocaleString(undefined, {month: "short", day: "numeric"})
         const finalText = date;
-        speak(finalText);
-    }
-
-    else if(message.includes('calculator')) {
-        window.open('Calculator:///')
-        const finalText = "Opening Calculator";
         speak(finalText);
     }
 
